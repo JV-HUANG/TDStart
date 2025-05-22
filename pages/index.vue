@@ -3,13 +3,9 @@
 definePageMeta({
   middleware: ['authenticated'],
 })
-  
+
 const { user, clear: clearSession } = useUserSession()
 
-async function logout() {
-  await clearSession()
-  await navigateTo('/login')
-}
 ////////////////////////////////////
 const awesome = ref(true)
 ////////////////////////////////////
@@ -72,8 +68,6 @@ const transparent = 'rgba(255, 255, 255, 0)'
     <br />
 
     <v-card variant="tonal">
-        <h1>WELCOME {{ user.name }}</h1>
-        <v-btn @click="logout" variant="tonal">退出网站</v-btn>
 
         <v-btn @click="awesome = !awesome" variant="text" prepend-icon="mdi-button-cursor">
             天地玄黄

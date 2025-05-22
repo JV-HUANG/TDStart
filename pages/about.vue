@@ -85,6 +85,11 @@
   </v-container>
 </template>
 <script setup>
+definePageMeta({
+  middleware: ['authenticated'],
+})
+const { user, clear: clearSession } = useUserSession()
+
 const items = [
   {
     title: 'HOME',

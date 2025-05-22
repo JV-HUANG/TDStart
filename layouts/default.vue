@@ -5,7 +5,17 @@ const runtimeConfig = useRuntimeConfig()
 
 import { ref } from 'vue'
 
+//////////////////////////////////////////////
+definePageMeta({
+  middleware: ['authenticated'],
+})
+const { user, clear: clearSession } = useUserSession()
 
+async function logout() {
+  await clearSession()
+  await navigateTo('/login')
+}
+/////////////////////////////////////////////
 const drawer = ref(true)
 const rail = ref(false)
 data: () => ({ drawer: null })
@@ -31,10 +41,11 @@ const items = [
         <AppLeftNavbar>
         </AppLeftNavbar>
     </v-navigation-drawer>
-    <AppHeaderBar>
+    <AppHeaderBar class="text-right">
+        <span class="text-subtitle-2">{{ user.name }}</span>
         <v-btn prepend-icon="mdi mdi-fullscreen" variant="text" size="small" title="FULL SCREEN" @click="drawer = !drawer">
         </v-btn>
-        DEFAULT LAYOUTS
+        <v-btn prepend-icon="mdi mdi-logout" variant="text" size="small" @click="logout"></v-btn>
     </AppHeaderBar>
     <v-main class="h-full">
         <!--  -->

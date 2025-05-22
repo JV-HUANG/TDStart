@@ -9,7 +9,6 @@ const theme = ref('dark')
 function onClick () {
 theme.value = theme.value === 'light' ? 'dark' : 'light'
 }
-
 </script>
 <template>
     <v-app id="inspire" :theme="theme">
