@@ -30,6 +30,8 @@ export default defineNuxtConfig({
     },
     //...
     '@nuxtjs/tailwindcss',
+    "nuxt-charts",
+    'nuxt-auth-utils'
   ],
   tailwindcss: {
     cssPath: '~/assets/css/tailwind.css',

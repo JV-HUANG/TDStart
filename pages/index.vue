@@ -1,4 +1,18 @@
 <script setup>
+/////////////////////////////////////
+definePageMeta({
+  middleware: ['authenticated'],
+})
+  
+const { user, clear: clearSession } = useUserSession()
+
+async function logout() {
+  await clearSession()
+  await navigateTo('/login')
+}
+////////////////////////////////////
+const awesome = ref(true)
+////////////////////////////////////
 const icons = ['mdi-rewind', 'mdi-play', 'mdi-fast-forward']
 const items = [
     {
@@ -23,7 +37,7 @@ const items = [
 const transparent = 'rgba(255, 255, 255, 0)'
 </script>
 <template>
-    <v-container class="text-center">
+    <v-card class="gap-4 mx-auto text-center">
         <v-row align="center" class="fill-height" justify="center">
             <template v-for="(item, i) in items" :key="i">
                 <v-col cols="12" md="4">
@@ -54,10 +68,26 @@ const transparent = 'rgba(255, 255, 255, 0)'
                 </v-col>
             </template>
         </v-row>
-    </v-container>
-    <v-container class="grid grid-cols-4 gap-4">
+    </v-card>
+    <br />
+
+    <v-card variant="tonal">
+        <h1>WELCOME {{ user.name }}</h1>
+        <v-btn @click="logout" variant="tonal">退出网站</v-btn>
+
+        <v-btn @click="awesome = !awesome" variant="text" prepend-icon="mdi-button-cursor">
+            天地玄黄
+        </v-btn>
+        <h1 v-if="awesome">寒来暑往 秋收冬藏</h1>
+        <h1 v-else>
+             闰余成岁 律吕调阳 云腾致雨 露结为霜!
+        </h1>
+    </v-card>
+
+    <div class="grid grid-cols-4 gap-4">
         <v-hover v-slot="{ isHovering, props }">
-            <v-card class="mx-auto w-auto" :class="{ 'on-hover': isHovering }" :elevation="isHovering ? 12 : 2" v-bind="props">
+            <v-card class="mx-auto w-auto" :class="{ 'on-hover': isHovering }" :elevation="isHovering ? 12 : 2"
+                v-bind="props">
                 <v-img class="align-end text-white" height="150" src="https://picsum.photos/500/300?image=110" cover>
                     <v-card-title>Top 10 Australian</v-card-title>
                 </v-img>
@@ -75,7 +105,8 @@ const transparent = 'rgba(255, 255, 255, 0)'
             </v-card>
         </v-hover>
         <v-hover v-slot="{ isHovering, props }">
-            <v-card class="mx-auto w-auto" :class="{ 'on-hover': isHovering }" :elevation="isHovering ? 12 : 2" v-bind="props">
+            <v-card class="mx-auto w-auto" :class="{ 'on-hover': isHovering }" :elevation="isHovering ? 12 : 2"
+                v-bind="props">
                 <v-img class="align-end text-white" height="150" src="https://picsum.photos/500/300?image=111" cover>
                     <v-card-title>Top 10 Australian</v-card-title>
                 </v-img>
@@ -93,7 +124,8 @@ const transparent = 'rgba(255, 255, 255, 0)'
             </v-card>
         </v-hover>
         <v-hover v-slot="{ isHovering, props }">
-            <v-card class="mx-auto w-auto" :class="{ 'on-hover': isHovering }" :elevation="isHovering ? 12 : 2" v-bind="props">
+            <v-card class="mx-auto w-auto" :class="{ 'on-hover': isHovering }" :elevation="isHovering ? 12 : 2"
+                v-bind="props">
                 <v-img class="align-end text-white" height="150" src="https://picsum.photos/500/300?image=12" cover>
                     <v-card-title>Top 10 Australian</v-card-title>
                 </v-img>
@@ -111,7 +143,8 @@ const transparent = 'rgba(255, 255, 255, 0)'
             </v-card>
         </v-hover>
         <v-hover v-slot="{ isHovering, props }">
-            <v-card class="mx-auto w-auto" :class="{ 'on-hover': isHovering }" :elevation="isHovering ? 12 : 2" v-bind="props">
+            <v-card class="mx-auto w-auto" :class="{ 'on-hover': isHovering }" :elevation="isHovering ? 12 : 2"
+                v-bind="props">
                 <v-img class="align-end text-white" height="150" src="https://picsum.photos/500/300?image=13" cover>
                     <v-card-title>Top 10 Australian</v-card-title>
                 </v-img>
@@ -128,15 +161,17 @@ const transparent = 'rgba(255, 255, 255, 0)'
                 </v-card-actions>
             </v-card>
         </v-hover>
-    </v-container>
+    </div>
 </template>
 <style scoped>
 .v-card {
     transition: opacity .4s ease-in-out;
 }
+
 .v-card:not(.on-hover) {
     opacity: 0.6;
 }
+
 .show-btns {
     color: rgba(255, 255, 255, 1) !important;
 }
