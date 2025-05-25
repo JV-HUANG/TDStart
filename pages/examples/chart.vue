@@ -25,15 +25,15 @@
       </v-col>
     </v-row>
     <v-row class="mt-5">
-      <v-col cols="2">Filled</v-col>
+      <v-col cols="2">填充</v-col>
       <v-col cols="3"><v-switch v-model="fill" class="switch"></v-switch></v-col>
-      <v-col cols="3">Line width</v-col>
+      <v-col cols="3">线粗</v-col>
       <v-col cols="3"><v-slider v-model="lineWidth" max="10" min="0.1" step="0.1" thumb-label></v-slider></v-col>
     </v-row>
     <v-row>
-      <v-col cols="2">Smooth</v-col>
+      <v-col cols="2">平滑</v-col>
       <v-col cols="3"><v-switch v-model="smooth" class="switch"></v-switch></v-col>
-      <v-col cols="3">Padding</v-col>
+      <v-col cols="3">边距</v-col>
       <v-col cols="3"><v-slider v-model="padding" cols="3" max="25" min="0" thumb-label></v-slider></v-col>
     </v-row>
   </v-container>

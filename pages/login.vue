@@ -21,8 +21,8 @@ function required (v) {
 //////////////////////////////////////////////////////////////////
 const { loggedIn, user, fetch: refreshSession } = useUserSession()
 const credentials = reactive({
-  email: '',
-  password: '',
+  email: 'admin@admin.com',
+  password: 'admin.com',
 })
 async function login() {
   $fetch('/api/login', {
@@ -41,20 +41,19 @@ async function login() {
 <template>
   <v-card class="mx-auto px-6 py-8 my-16 gap-4" max-width="420">
     <v-form v-model="form" @submit.prevent="login">
-      <img src="/assets/img/logo.svg" alt="logo" width="120" height="120" class="mx-auto" />
+      <img src="/assets/img/logo.svg" alt="logo" width="128" height="128" class="mx-auto" />
       <v-text-field v-model="credentials.email" :readonly="loading" :rules="[required]"
        class="mb-2" label="帐号" clearable>
       </v-text-field>
       <v-text-field v-model="credentials.password" :readonly="loading" :rules="[required]"
        label="密码" placeholder="请输入您的密码" type="password" clearable>
       </v-text-field>
-
-      <br>
       <v-btn prepend-icon="mdi-checkbox-marked-outline" :disabled="!form" :loading="loading" variant="tonal"
         size="large" type="submit" block>
         登录网站
       </v-btn>
-      <p class="text-center gap-4 my-4 text-subtitle-2 font-italic">admin@admin.com / admin.com</p>
+      <br>
+      <p class="text-center gap-4 my-4 text-subtitle-2">粤ICP备2025381183号<br /> & 基于 MIT 许可发布</p>
     </v-form>
   </v-card>
 </template>

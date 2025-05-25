@@ -27,11 +27,17 @@ const items = [
 { text: 'Recent', icon: 'mdi-file-cloud' },
 { text: 'Offline', icon: 'mdi-file-cloud' },
 ]
+/////////////////////////////////////////////
+import { shallowRef } from 'vue'
+const sheet = shallowRef(false)
+
+const collapse = shallowRef(true)
+/////////////////////////////////////////////
 </script>
 <template>
     <v-navigation-drawer width="180" v-model="drawer" :rail="rail" permanent @click="rail = false">
         <v-list class="mx-auto py-1">
-            <v-list-item prepend-avatar="/assets/img/logo.svg" title="VERY">
+            <v-list-item prepend-avatar="/assets/img/logo.svg" title="Start">
                 <template v-slot:append>
                     <v-btn icon="mdi-chevron-left" variant="text" @click.stop="rail = !rail"></v-btn>
                 </template>
@@ -43,9 +49,9 @@ const items = [
     </v-navigation-drawer>
     <AppHeaderBar class="text-right">
         <span class="text-subtitle-2">{{ user.name }}</span>
-        <v-btn prepend-icon="mdi mdi-fullscreen" variant="text" size="small" title="FULL SCREEN" @click="drawer = !drawer">
+        <v-btn icon="mdi mdi-fullscreen" variant="text" size="small" title="FULL SCREEN" @click="drawer = !drawer">
         </v-btn>
-        <v-btn prepend-icon="mdi mdi-logout" variant="text" size="small" @click="logout"></v-btn>
+        <v-btn icon="mdi mdi-logout" variant="text" size="small" @click="logout"></v-btn>
     </AppHeaderBar>
     <v-main class="h-full">
         <!--  -->
@@ -53,21 +59,37 @@ const items = [
         <NuxtLoadingIndicator />
         <slot />
     </v-main>
-    <v-navigation-drawer v-model="drawer" width="64" location="right">
-        <v-list :lines="false" density="compact" class="mx-0 px-0 py-0" nav>
-            <v-list-item v-for="(item, i) in items" class="mx-0 px-0 py-0" :key="i" :value="item">
-                <v-btn variant="text" :to="item.href">
-                    <v-icon :icon="item.icon"></v-icon>
-                    <v-list-item-title :title="item.text"></v-list-item-title>
-                </v-btn>
-            </v-list-item>
-        </v-list>
+    <v-navigation-drawer v-model="drawer" location="right">
+        <v-toolbar>
+            <v-toolbar-title text="Toolbar"></v-toolbar-title>
+            <v-btn icon="mdi-menu"></v-btn>
+        </v-toolbar>
+        <v-expansion-panels variant="accordion">
+            <v-expansion-panel
+                v-for="i in 5"
+                :key="i"
+                text="Lorem ipsum dolor sit amet, consectetur adipiscing elit, "
+                title="Item">
+            </v-expansion-panel>
+        </v-expansion-panels>
     </v-navigation-drawer>
     <v-footer>
-        <v-bottom-navigation mode="shift" horizontal>
-            <v-btn><v-icon>mdi-history</v-icon><span>Recents</span></v-btn>
-            <v-btn><v-icon>mdi-heart</v-icon><span>Favorites</span></v-btn>
-            <v-btn><v-icon>mdi-map-marker</v-icon><span>Nearby</span></v-btn>
+        <v-bottom-navigation height="36" horizontal>
+            <v-btn size="x-small" @click="sheet = !sheet"><v-icon>mdi-history</v-icon></v-btn>
+            <v-btn size="x-small"><v-icon>mdi-heart</v-icon></v-btn>
+            <v-btn size="x-small"><v-icon>mdi-map-marker</v-icon></v-btn>
         </v-bottom-navigation>
+        <v-bottom-sheet v-model="sheet">
+        <v-card class="text-center" height="200">
+            <v-card-text>
+            <v-btn text="Close" variant="text" @click="sheet = !sheet"></v-btn>
+            <br>
+            <br>
+            <div>
+                This is a bottom sheet using the controlled by v-model instead of activator
+            </div>
+            </v-card-text>
+        </v-card>
+        </v-bottom-sheet>
     </v-footer>
 </template>

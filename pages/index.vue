@@ -33,7 +33,7 @@ const items = [
 const transparent = 'rgba(255, 255, 255, 0)'
 </script>
 <template>
-    <v-card class="gap-4 mx-auto text-center">
+    <div class="gap-4 mx-auto text-center">
         <v-row align="center" class="fill-height" justify="center">
             <template v-for="(item, i) in items" :key="i">
                 <v-col cols="12" md="4">
@@ -64,106 +64,100 @@ const transparent = 'rgba(255, 255, 255, 0)'
                 </v-col>
             </template>
         </v-row>
-    </v-card>
+    </div>
     <br />
-
-    <v-card variant="tonal">
-
-        <v-btn @click="awesome = !awesome" variant="text" prepend-icon="mdi-button-cursor">
+    <v-card variant="tonal" class="justify-center mx-auto gap-4 px-2 py-2 text-center">
+        <v-btn @click="awesome = !awesome" variant="tonal" prepend-icon="mdi-button-cursor">
             天地玄黄
         </v-btn>
         <h1 v-if="awesome">寒来暑往 秋收冬藏</h1>
         <h1 v-else>
-             闰余成岁 律吕调阳 云腾致雨 露结为霜!
+            闰余成岁 律吕调阳 云腾致雨 露结为霜!
         </h1>
     </v-card>
 
-    <div class="grid grid-cols-4 gap-4">
+    <div class="grid grid-cols-4 gap-4 px-2 py-2">
         <v-hover v-slot="{ isHovering, props }">
-            <v-card class="mx-auto w-auto" :class="{ 'on-hover': isHovering }" :elevation="isHovering ? 12 : 2"
-                v-bind="props">
-                <v-img class="align-end text-white" height="150" src="https://picsum.photos/500/300?image=110" cover>
-                    <v-card-title>Top 10 Australian</v-card-title>
-                </v-img>
-                <v-card-subtitle class="pt-4">
-                    Number 10
-                </v-card-subtitle>
+            <v-card class="mx-auto" v-bind="props">
+                <v-img src="https://picsum.photos/500/300?image=110"></v-img>
                 <v-card-text>
-                    <div>Whitehaven Beach</div>
-                    <div>Whitsunday Island, Whitsunday Islands</div>
+                    <h2 class="text-h6 text-primary">
+                        Magento Forests
+                    </h2>
+                    Travel to the best outdoor experience on planet Earth.
                 </v-card-text>
-                <v-card-actions>
-                    <v-btn variant="tonal" text="Share"></v-btn>
-                    <v-btn variant="tonal" text="Explore"></v-btn>
-                </v-card-actions>
+                <v-card-title>
+                    <v-rating :model-value="4" color="orange" density="compact" hover></v-rating>
+                    <span class="text-primary text-subtitle-2 float-right my-2">64 Reviews</span>
+                </v-card-title>
+                <v-overlay :model-value="!!isHovering" class="align-center justify-center" scrim="#036358" contained>
+                    <v-btn variant="flat">See more info</v-btn>
+                </v-overlay>
             </v-card>
         </v-hover>
         <v-hover v-slot="{ isHovering, props }">
-            <v-card class="mx-auto w-auto" :class="{ 'on-hover': isHovering }" :elevation="isHovering ? 12 : 2"
-                v-bind="props">
-                <v-img class="align-end text-white" height="150" src="https://picsum.photos/500/300?image=111" cover>
-                    <v-card-title>Top 10 Australian</v-card-title>
-                </v-img>
-                <v-card-subtitle class="pt-4">
-                    Number 10
-                </v-card-subtitle>
+            <v-card class="mx-auto" v-bind="props">
+                <v-img src="https://picsum.photos/500/300?image=111"></v-img>
                 <v-card-text>
-                    <div>Whitehaven Beach</div>
-                    <div>Whitsunday Island, Whitsunday Islands</div>
+                    <h2 class="text-h6 text-primary">
+                        Magento Forests
+                    </h2>
+                    Travel to the best outdoor experience on planet Earth.
                 </v-card-text>
-                <v-card-actions>
-                    <v-btn variant="tonal" text="Share"></v-btn>
-                    <v-btn variant="tonal" text="Explore"></v-btn>
-                </v-card-actions>
+                <v-card-title>
+                    <v-rating :model-value="4" color="orange" density="compact" hover></v-rating>
+                    <span class="text-primary text-subtitle-2 float-right my-2">64 Reviews</span>
+                </v-card-title>
+                <v-overlay :model-value="!!isHovering" class="align-center justify-center" scrim="#036358" contained>
+                    <v-btn variant="flat">See more info</v-btn>
+                </v-overlay>
             </v-card>
         </v-hover>
         <v-hover v-slot="{ isHovering, props }">
-            <v-card class="mx-auto w-auto" :class="{ 'on-hover': isHovering }" :elevation="isHovering ? 12 : 2"
-                v-bind="props">
-                <v-img class="align-end text-white" height="150" src="https://picsum.photos/500/300?image=12" cover>
-                    <v-card-title>Top 10 Australian</v-card-title>
-                </v-img>
-                <v-card-subtitle class="pt-4">
-                    Number 10
-                </v-card-subtitle>
+            <v-card class="mx-auto" v-bind="props">
+                <v-img src="https://picsum.photos/500/300?image=112"></v-img>
                 <v-card-text>
-                    <div>Whitehaven Beach</div>
-                    <div>Whitsunday Island, Whitsunday Islands</div>
+                    <h2 class="text-h6 text-primary">
+                        Magento Forests
+                    </h2>
+                    Travel to the best outdoor experience on planet Earth.
                 </v-card-text>
-                <v-card-actions>
-                    <v-btn variant="tonal" text="Share"></v-btn>
-                    <v-btn variant="tonal" text="Explore"></v-btn>
-                </v-card-actions>
+                <v-card-title>
+                    <v-rating :model-value="4" color="orange" density="compact" hover></v-rating>
+                    <span class="text-primary text-subtitle-2 float-right my-2">64 Reviews</span>
+                </v-card-title>
+                <v-overlay :model-value="!!isHovering" class="align-center justify-center" scrim="#036358" contained>
+                    <v-btn variant="flat">See more info</v-btn>
+                </v-overlay>
             </v-card>
         </v-hover>
         <v-hover v-slot="{ isHovering, props }">
-            <v-card class="mx-auto w-auto" :class="{ 'on-hover': isHovering }" :elevation="isHovering ? 12 : 2"
-                v-bind="props">
-                <v-img class="align-end text-white" height="150" src="https://picsum.photos/500/300?image=13" cover>
-                    <v-card-title>Top 10 Australian</v-card-title>
-                </v-img>
-                <v-card-subtitle class="pt-4">
-                    Number 10
-                </v-card-subtitle>
+            <v-card class="mx-auto" v-bind="props">
+                <v-img src="https://picsum.photos/500/300?image=113"></v-img>
                 <v-card-text>
-                    <div>Whitehaven Beach</div>
-                    <div>Whitsunday Island, Whitsunday Islands</div>
+                    <h2 class="text-h6 text-primary">
+                        Magento Forests
+                    </h2>
+                    Travel to the best outdoor experience on planet Earth.
                 </v-card-text>
-                <v-card-actions>
-                    <v-btn variant="tonal" text="Share"></v-btn>
-                    <v-btn variant="tonal" text="Explore"></v-btn>
-                </v-card-actions>
+                <v-card-title class="align-center justify-center">
+                    <v-rating :model-value="4" color="orange" density="compact" hover></v-rating>
+                    <span class="text-primary text-subtitle-2 float-right my-2">64 Reviews</span>
+                </v-card-title>
+                <v-overlay :model-value="!!isHovering" class="align-center justify-center" scrim="#036358" contained>
+                    <v-btn variant="flat">See more info</v-btn>
+                </v-overlay>
             </v-card>
         </v-hover>
     </div>
 </template>
 <style scoped>
 .v-card {
-    transition: opacity .4s ease-in-out;
+    transition: opacity .6s ease-in-out;
 }
 
 .v-card:not(.on-hover) {
-    opacity: 0.6;
+    opacity: 0.8;
 }
 
 .show-btns {

@@ -16,6 +16,7 @@ const marketShareLabels = [
 </script>
 
 <template>
+  <v-card variant="text" class="mx-auto gap-4 px-4 py-14 w-min">
   <DonutChart
     :data="donutData"
     :height="275"
@@ -28,4 +29,5 @@ const marketShareLabels = [
       <div class="text-(--ui-text-muted)">2 seconds ago</div>
     </div>
   </DonutChart>
+  </v-card>
 </template>

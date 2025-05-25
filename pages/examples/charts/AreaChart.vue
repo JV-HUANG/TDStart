@@ -12,10 +12,10 @@ interface AreaChartItem {
 
 const categories: Record<string, BulletLegendItemInterface> = computed(() => ({
   desktop: {
-    name: 'Desktop',
+    name: 'Desktop/PC桌面',
   },
   mobile: {
-    name: 'Mobile',
+    name: 'Mobile/移动设备',
   },
 }))
 
@@ -31,13 +31,17 @@ const xFormatter = (i: number): string | number => `${AreaChartData[i]?.date}`
 </script>
 
 <template>
-  <!-- :key="colorMode.value" re-renders the component on colorMode change -->
-  <AreaChart
-    :data="AreaChartData"
-    :height="275"
-    :categories="categories"
-    :y-grid-line="true"
-    :x-formatter="xFormatter"
-    :curve-type="CurveType.MonotoneX"
-  />
+  <v-card variant="text" class="mx-auto gap-4 px-4 py-4 w-full">
+    <!-- :key="colorMode.value" re-renders the component on colorMode change -->
+    <AreaChart :data="AreaChartData" :height="275" :categories="categories" :y-grid-line="true"
+      :x-formatter="xFormatter" :curve-type="CurveType.MonotoneX" />
+  </v-card>
 </template>
+
+<style lang="scss">
+.css-czc1aa-bullet-legend-component {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+}
+</style>

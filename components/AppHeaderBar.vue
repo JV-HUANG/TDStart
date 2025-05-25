@@ -23,10 +23,8 @@ const items = [
                     <v-btn icon="mdi-dots-vertical" variant="text" v-bind="props"></v-btn>
                 </template>
                 <v-list>
-                    <v-list-item v-for="(item, i) in items" :key="i" :value="i">
-                        <v-btn variant="text" :to="item.href">
-                            <v-list-item-title>{{ item.text }}</v-list-item-title>
-                        </v-btn>
+                    <v-list-item v-for="(item, i) in items" :key="i" :value="i" :prepend-icon="item.icon" :to="item.href">
+                        <v-list-item-title>{{ item.text }}</v-list-item-title>
                     </v-list-item>
                 </v-list>
             </v-menu>

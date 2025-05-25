@@ -4,17 +4,17 @@ definePageMeta({
 })
 
 const RevenueData = [
-  { month: 'January', desktop: 186, mobile: 80 },
-  { month: 'February', desktop: 305, mobile: 200 },
-  { month: 'March', desktop: 237, mobile: 120 },
-  { month: 'April', desktop: 73, mobile: 190 },
-  { month: 'May', desktop: 209, mobile: 130 },
-  { month: 'June', desktop: 214, mobile: 140 },
+  { month: 'January一月', desktop: 186, mobile: 80 },
+  { month: 'February二月', desktop: 305, mobile: 200 },
+  { month: 'March三月', desktop: 237, mobile: 120 },
+  { month: 'April四月', desktop: 73, mobile: 190 },
+  { month: 'May五月', desktop: 209, mobile: 130 },
+  { month: 'June六月', desktop: 214, mobile: 140 },
 ]
 
 const RevenueCategories = computed(() => ({
   desktop: {
-    name: 'Desktop',
+    name: 'Desktop/桌面',
   },
 }))
 
@@ -23,6 +23,7 @@ const yFormatter = (i: number) => i
 </script>
 
 <template>
+  <v-card variant="text" class="mx-auto gap-4 px-4 py-4 w-full">
   <BarChart
     :data="RevenueData"
     :height="275"
@@ -35,4 +36,12 @@ const yFormatter = (i: number) => i
     :y-formatter="yFormatter"
     :legend-position="LegendPosition.Top"
   />
+  </v-card>
 </template>
+<style lang="scss">
+.css-czc1aa-bullet-legend-component {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+}
+</style>

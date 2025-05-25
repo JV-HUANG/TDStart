@@ -4,7 +4,7 @@
       <template v-slot:header>
         <v-toolbar class="px-2">
           <v-text-field v-model="search" density="comfortable" placeholder="Search" prepend-inner-icon="mdi-magnify"
-            style="max-width: 300px;" variant="solo" clearable hide-details>
+            style="max-width: 300px;" variant="outlined" clearable hide-details>
           </v-text-field>
         </v-toolbar>
       </template>
