@@ -1,5 +1,5 @@
 <template>
-  <h1 class="text-4xl text-center font-bold my-4">SIMPLE GALLERY</h1>
+  <h1 class="text-4xl text-center font-bold my-4">简易图库</h1>
   <SimpleGallery galleryID="my-test-gallery" :images="images" />
 </template>
 

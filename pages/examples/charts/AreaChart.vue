@@ -6,42 +6,194 @@ definePageMeta({
 
 interface AreaChartItem {
   date: string
-  desktop: number
-  mobile: number
+  Requests: number
+  ['Errors']: number
 }
 
-const categories: Record<string, BulletLegendItemInterface> = computed(() => ({
-  desktop: {
-    name: 'Desktop/PC桌面',
-  },
-  mobile: {
-    name: 'Mobile/移动设备',
-  },
-}))
+const categories: Record<string, BulletLegendItemInterface> = {
+  Requests: { name: 'Success', color: '#4B6A88' },
+  Errors: { name: 'Errors', color: '#fb2c36' },
+}
 
 const AreaChartData: AreaChartItem[] = [
-  { date: '2024-04-01', desktop: 222, mobile: 150 },
-  { date: '2024-04-02', desktop: 180, mobile: 97 },
-  { date: '2024-04-03', desktop: 167, mobile: 120 },
-  { date: '2024-04-04', desktop: 260, mobile: 240 },
-  { date: '2024-04-05', desktop: 240, mobile: 290 },
+  {
+    date: 'Aug 01',
+    Requests: 1040,
+    Errors: 0,
+  },
+  {
+    date: 'Aug 02',
+    Requests: 1200,
+    Errors: 0,
+  },
+  {
+    date: 'Aug 03',
+    Requests: 1130,
+    Errors: 0,
+  },
+  {
+    date: 'Aug 04',
+    Requests: 1050,
+    Errors: 0,
+  },
+  {
+    date: 'Aug 05',
+    Requests: 920,
+    Errors: 0,
+  },
+  {
+    date: 'Aug 06',
+    Requests: 870,
+    Errors: 0,
+  },
+  {
+    date: 'Aug 07',
+    Requests: 790,
+    Errors: 0,
+  },
+  {
+    date: 'Aug 08',
+    Requests: 910,
+    Errors: 0,
+  },
+  {
+    date: 'Aug 09',
+    Requests: 951,
+    Errors: 0,
+  },
+  {
+    date: 'Aug 10',
+    Requests: 1232,
+    Errors: 0,
+  },
+  {
+    date: 'Aug 11',
+    Requests: 1230,
+    Errors: 0,
+  },
+  {
+    date: 'Aug 12',
+    Requests: 1289,
+    Errors: 0,
+  },
+  {
+    date: 'Aug 13',
+    Requests: 1002,
+    Errors: 0,
+  },
+  {
+    date: 'Aug 14',
+    Requests: 1034,
+    Errors: 0,
+  },
+  {
+    date: 'Aug 15',
+    Requests: 1140,
+    Errors: 0,
+  },
+  {
+    date: 'Aug 16',
+    Requests: 1280,
+    Errors: 0,
+  },
+  {
+    date: 'Aug 17',
+    Requests: 1345,
+    Errors: 0,
+  },
+  {
+    date: 'Aug 18',
+    Requests: 1432,
+    Errors: 0,
+  },
+  {
+    date: 'Aug 19',
+    Requests: 1321,
+    Errors: 0,
+  },
+  {
+    date: 'Aug 20',
+    Requests: 1230,
+    Errors: 0,
+  },
+  {
+    date: 'Aug 21',
+    Requests: 1020,
+    Errors: 0,
+  },
+  {
+    date: 'Aug 22',
+    Requests: 1040,
+    Errors: 0,
+  },
+  {
+    date: 'Aug 23',
+    Requests: 610,
+    Errors: 81,
+  },
+  {
+    date: 'Aug 24',
+    Requests: 610,
+    Errors: 87,
+  },
+  {
+    date: 'Aug 25',
+    Requests: 610,
+    Errors: 92,
+  },
+  {
+    date: 'Aug 26',
+    Requests: 501,
+    Errors: 120,
+  },
+  {
+    date: 'Aug 27',
+    Requests: 480,
+    Errors: 120,
+  },
+  {
+    date: 'Aug 28',
+    Requests: 471,
+    Errors: 120,
+  },
+  {
+    date: 'Aug 29',
+    Requests: 610,
+    Errors: 89,
+  },
+  {
+    date: 'Aug 30',
+    Requests: 513,
+    Errors: 199,
+  },
+  {
+    date: 'Aug 31',
+    Requests: 500,
+    Errors: 56,
+  },
 ]
-
 const xFormatter = (i: number): string | number => `${AreaChartData[i]?.date}`
+const sum = (arr, key) => arr.reduce((sum, obj) => sum + obj[key], 0)
 </script>
-
 <template>
-  <v-card variant="text" class="mx-auto gap-4 px-4 py-4 w-full">
-    <!-- :key="colorMode.value" re-renders the component on colorMode change -->
-    <AreaChart :data="AreaChartData" :height="275" :categories="categories" :y-grid-line="true"
-      :x-formatter="xFormatter" :curve-type="CurveType.MonotoneX" />
-  </v-card>
-</template>
+  <div class="mx-auto w-full px-20">
+    <div class="space-y-1 w-full">
+      <h3 class="text-sm text-(--ui-text-muted)">状态监视器</h3>
+      <h2 class="text-2xl font-medium">
+        {{ sum(AreaChartData, 'Errors') }} 错误
+      </h2>
+    </div>
 
-<style lang="scss">
-.css-czc1aa-bullet-legend-component {
-  position: absolute;
-  top: 10px;
-  right: 10px;
-}
-</style>
+    <AreaChart
+      :data="AreaChartData"
+      :height="420"
+      :categories="categories"
+      :y-grid-line="true"
+      :x-formatter="xFormatter"
+      :x-num-ticks="4"
+      :y-num-ticks="4"
+      :curve-type="CurveType.MonotoneX"
+      :legend-position="LegendPosition.Top"
+    />
+  </div>
+</template>

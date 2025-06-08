@@ -1,14 +1,13 @@
 <template>
-  <div :id="galleryID" class="justify-center flex flex-wrap items-center gap-8">
+  <div :id="galleryID" class="justify-center flex flex-wrap text-center gap-8">
     <a v-for="(image, key) in imagesData"
       :key="key"
       :href="image.largeURL"
       :data-pswp-width="image.width"
       :data-pswp-height="image.height"
-      target="_blank"
       rel="noreferrer">
-      <img class="rounded-xl border-xl ":src="image.thumbnailURL" alt="" />
-      <p class="justify-center text-center">{{ image.width }} x {{ image.height }}</p>
+      <img class="border-xl ":src="image.thumbnailURL" alt="" />
+      <label class="justify-center text-center">{{ image.width }} x {{ image.height }}</label>
     </a>
   </div>
 </template>

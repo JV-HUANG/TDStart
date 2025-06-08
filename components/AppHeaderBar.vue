@@ -1,8 +1,8 @@
 <script setup>
 const items = [
-    { text: 'HOME', icon: 'mdi-home-lightning-bolt-outline', href: '/' },
-    { text: 'ABOUT', icon: 'mdi-information-box-outline', href: '/about' },
-    { text: 'EXAMPLES', icon: 'mdi-file-alert-outline', href: '/examples/' },
+    { text: '首页', icon: 'mdi-home-lightning-bolt-outline', href: '/' },
+    { text: '关于', icon: 'mdi-information-box-outline', href: '/about' },
+    { text: '示例', icon: 'mdi-file-alert-outline', href: '/examples/' },
 ]
 </script>
 <template>
@@ -24,7 +24,7 @@ const items = [
                 </template>
                 <v-list>
                     <v-list-item v-for="(item, i) in items" :key="i" :value="i" :prepend-icon="item.icon" :to="item.href">
-                        <v-list-item-title>{{ item.text }}</v-list-item-title>
+                        <v-list-item-title class="mr-8">{{ item.text }}</v-list-item-title>
                     </v-list-item>
                 </v-list>
             </v-menu>

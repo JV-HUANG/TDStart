@@ -1,7 +1,7 @@
 <script setup>
 /////////////////////////////////////
 definePageMeta({
-  middleware: ['authenticated'],
+    middleware: ['authenticated'],
 })
 
 const { user, clear: clearSession } = useUserSession()
@@ -12,21 +12,20 @@ const awesome = ref(true)
 const icons = ['mdi-rewind', 'mdi-play', 'mdi-fast-forward']
 const items = [
     {
-        title: 'New Releases',
-        text: `It's New Release Friday`,
-        subtext: 'Newly released songs.',
+        title: '新品发布',
+        text: `这是新片发行周五`,
+        subtext: '新发布的歌曲',
         img: 'https://cdn.vuetifyjs.com/docs/images/cards/hands.jpg',
     },
     {
-        title: 'Rock',
-        text: 'Greatest Rock Hits',
-        subtext: 'Lose yourself in rock tunes.',
+        title: '摇滚乐',
+        subtext: '最伟大的摇滚金曲',
         img: 'https://cdn.vuetifyjs.com/docs/images/cards/singer.jpg',
     },
     {
-        title: 'Mellow Moods',
-        text: 'Ambient Bass',
-        subtext: 'Chill beats to mellow you out.',
+        title: '温馨的心境',
+        text: '环境低音',
+        subtext: '轻松舒缓的节奏让你放松下来',
         img: 'https://cdn.vuetifyjs.com/docs/images/cards/concert.jpg',
     },
 ]
@@ -66,86 +65,74 @@ const transparent = 'rgba(255, 255, 255, 0)'
         </v-row>
     </div>
     <br />
-    <v-card variant="tonal" class="justify-center mx-auto gap-4 px-2 py-2 text-center">
-        <v-btn @click="awesome = !awesome" variant="tonal" prepend-icon="mdi-button-cursor">
-            天地玄黄
-        </v-btn>
-        <h1 v-if="awesome">寒来暑往 秋收冬藏</h1>
-        <h1 v-else>
-            闰余成岁 律吕调阳 云腾致雨 露结为霜!
-        </h1>
-    </v-card>
-
-    <div class="grid grid-cols-4 gap-4 px-2 py-2">
+    <v-toolbar>
+        <v-toolbar-title>
+            <v-btn size="x-large" @click="awesome = !awesome" variant="tonal" prepend-icon="mdi-button-cursor">天地玄黄 宇宙洪荒</v-btn>
+            <label v-if="awesome" class="px-6 text-h6">寒来暑往 秋收冬藏</label>
+            <label v-else class="px-6 text-h6">闰余成岁 律吕调阳 云腾致雨 露结为霜!</label>
+        </v-toolbar-title>
+        <template v-slot:append>
+            <div class="d-flex ga-1">
+                <v-btn icon="mdi-dots-vertical">
+                </v-btn>
+            </div>
+        </template>
+    </v-toolbar>
+    <div class="grid grid-cols-3 gap-4 px-2 py-2">
         <v-hover v-slot="{ isHovering, props }">
-            <v-card class="mx-auto" v-bind="props">
+            <v-card class="w-full mx-auto" v-bind="props">
                 <v-img src="https://picsum.photos/500/300?image=110"></v-img>
                 <v-card-text>
                     <h2 class="text-h6 text-primary">
-                        Magento Forests
+                        马格诺森林
                     </h2>
-                    Travel to the best outdoor experience on planet Earth.
+                    探索地球上最棒的户外体验.
                 </v-card-text>
                 <v-card-title>
                     <v-rating :model-value="4" color="orange" density="compact" hover></v-rating>
-                    <span class="text-primary text-subtitle-2 float-right my-2">64 Reviews</span>
                 </v-card-title>
                 <v-overlay :model-value="!!isHovering" class="align-center justify-center" scrim="#036358" contained>
-                    <v-btn variant="flat">See more info</v-btn>
+                    <v-btn variant="flat" :href="'https://picsum.photos/500/300?image=110'" target="_blank">
+                        查看更多信息
+                    </v-btn>
                 </v-overlay>
             </v-card>
         </v-hover>
         <v-hover v-slot="{ isHovering, props }">
-            <v-card class="mx-auto" v-bind="props">
+            <v-card class="w-full mx-auto" v-bind="props">
                 <v-img src="https://picsum.photos/500/300?image=111"></v-img>
                 <v-card-text>
                     <h2 class="text-h6 text-primary">
-                        Magento Forests
+                        马格诺森林
                     </h2>
-                    Travel to the best outdoor experience on planet Earth.
+                    探索地球上最棒的户外体验.
                 </v-card-text>
                 <v-card-title>
                     <v-rating :model-value="4" color="orange" density="compact" hover></v-rating>
-                    <span class="text-primary text-subtitle-2 float-right my-2">64 Reviews</span>
                 </v-card-title>
                 <v-overlay :model-value="!!isHovering" class="align-center justify-center" scrim="#036358" contained>
-                    <v-btn variant="flat">See more info</v-btn>
+                    <v-btn variant="flat" :href="'https://picsum.photos/500/300?image=111'" target="_blank">
+                        查看更多信息
+                    </v-btn>
                 </v-overlay>
             </v-card>
         </v-hover>
         <v-hover v-slot="{ isHovering, props }">
-            <v-card class="mx-auto" v-bind="props">
+            <v-card class="w-full mx-auto" v-bind="props">
                 <v-img src="https://picsum.photos/500/300?image=112"></v-img>
                 <v-card-text>
                     <h2 class="text-h6 text-primary">
-                        Magento Forests
+                        马格诺森林
                     </h2>
-                    Travel to the best outdoor experience on planet Earth.
+                    探索地球上最棒的户外体验..
                 </v-card-text>
                 <v-card-title>
                     <v-rating :model-value="4" color="orange" density="compact" hover></v-rating>
-                    <span class="text-primary text-subtitle-2 float-right my-2">64 Reviews</span>
                 </v-card-title>
                 <v-overlay :model-value="!!isHovering" class="align-center justify-center" scrim="#036358" contained>
-                    <v-btn variant="flat">See more info</v-btn>
-                </v-overlay>
-            </v-card>
-        </v-hover>
-        <v-hover v-slot="{ isHovering, props }">
-            <v-card class="mx-auto" v-bind="props">
-                <v-img src="https://picsum.photos/500/300?image=113"></v-img>
-                <v-card-text>
-                    <h2 class="text-h6 text-primary">
-                        Magento Forests
-                    </h2>
-                    Travel to the best outdoor experience on planet Earth.
-                </v-card-text>
-                <v-card-title class="align-center justify-center">
-                    <v-rating :model-value="4" color="orange" density="compact" hover></v-rating>
-                    <span class="text-primary text-subtitle-2 float-right my-2">64 Reviews</span>
-                </v-card-title>
-                <v-overlay :model-value="!!isHovering" class="align-center justify-center" scrim="#036358" contained>
-                    <v-btn variant="flat">See more info</v-btn>
+                    <v-btn variant="flat" :href="'https://picsum.photos/500/300?image=112'" target="_blank">
+                        查看更多信息
+                    </v-btn>
                 </v-overlay>
             </v-card>
         </v-hover>

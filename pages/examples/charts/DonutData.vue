@@ -19,11 +19,11 @@ const marketShareLabels = [
   <v-card variant="text" class="mx-auto gap-4 px-4 py-14 w-min">
   <DonutChart
     :data="donutData"
-    :height="275"
+    :height="300"
+    :width="400" 
     :radius="0"
     :type="'full'"
-    :labels="marketShareLabels"
-  >
+    :labels="marketShareLabels">
     <div class="absolute text-center py-24">
       <div class="font-semibold">Label</div>
       <div class="text-(--ui-text-muted)">2 seconds ago</div>

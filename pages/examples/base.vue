@@ -3,18 +3,15 @@
     <template v-slot:header="{ page, pageCount, prevPage, nextPage }">
       <h1 class="text-h4 font-weight-bold d-flex justify-space-between mb-4 align-center">
         <div class="text-truncate">
-          Most popular mice
+          最受欢迎的鼠标
         </div>
-
         <div class="d-flex align-center">
           <v-btn class="me-8" variant="text" @click="onClickSeeAll">
-            <span class="text-decoration-underline text-none">See all</span>
+            <span class="text-decoration-underline text-none">查看所有</span>
           </v-btn>
-
           <div class="d-inline-flex">
             <v-btn :disabled="page === 1" class="me-2" icon="mdi-arrow-left" size="small" variant="tonal"
               @click="prevPage"></v-btn>
-
             <v-btn :disabled="page === pageCount" icon="mdi-arrow-right" size="small" variant="tonal"
               @click="nextPage"></v-btn>
           </div>
@@ -25,7 +22,9 @@
       <v-row>
         <v-col v-for="(item, i) in items" :key="i" cols="12" sm="4" xl="3">
           <v-sheet>
-            <v-img :src="item.raw.src" height="150" cover></v-img>
+            <a :href="item.raw.src" target="_blank">
+              <v-img :src="item.raw.src" height="150" cover></v-img>
+            </a>
             <v-list-item :title="item.raw.name" density="comfortable" lines="two"
               subtitle="Lorem ipsum dil orei namdie dkaf">
               <template v-slot:title>
@@ -62,9 +61,9 @@
     </template>
     <template v-slot:footer="{ page, pageCount }">
       <v-footer class="justify-space-between text-body-2 mt-4">
-        Total mice: {{ mice.length }}
+        鼠标总数: {{ mice.length }}
         <div>
-          Page {{ page }} of {{ pageCount }}
+          页面 {{ page }} of {{ pageCount }}
         </div>
       </v-footer>
     </template>

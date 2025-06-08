@@ -18,6 +18,7 @@ const canDecrease = computed(() => id.value > 1)
 </script>
 
 <template>
+  <h1 class="text-h3">数据提取</h1>
   <v-card class="mx-auto w-auto text-h5 px-4 py-4">
     输出<code>https://dummyjson.com/products/</code>
     <input v-model="id" type="number" />
@@ -33,7 +34,7 @@ const canDecrease = computed(() => id.value > 1)
       <a :href="product.images" target="_blank">
         <img :src="product.thumbnail" />
       </a>
-      <hr />
+      <br />
       <img :src="product.meta.qrCode" />
     </div>
     <div class="col-span-2">
